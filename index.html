@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Zipmex CloudFlare</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <script
+      src="https://unpkg.com/react@latest/umd/react.production.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/react-dom@latest/umd/react-dom.production.min.js"></script>
+    <script
+      src="https://unpkg.com/@mui/material@latest/umd/material-ui.production.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/babel-standalone@latest/babel.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+      body {
+        font-family: "Poppins" !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const {
+        CssBaseline,
+        ThemeProvider,
+        Typography,
+        createTheme,
+        Box,
+        CircularProgress,
+        Theme,
+      } = MaterialUI;
+
+      const theme = createTheme({
+        palette: {
+          black: "#000000",
+          blurple: "#3944EB",
+          green: "#96ff90",
+          gray: "#E9EAFD",
+        },
+      });
+
+      const Logo = () => {
+        return (
+          <Box
+            sx={{
+              mb: 6,
+              "& svg": {
+                filter: "invert(100%)",
+              },
+            }}
+          >
+            <svg
+              width="100%"
+              height="32"
+              viewBox="0 0 77 19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M11.8957 7.98639L14.8996 1.51366C14.9751 1.3506 15.0082 1.17106 14.9958 0.991751C14.9834 0.812444 14.9258 0.639199 14.8285 0.488137C14.7313 0.337075 14.5974 0.213106 14.4394 0.127765C14.2814 0.0424246 14.1044 -0.00151328 13.9248 3.9787e-05H4.50517C4.29727 0.000569762 4.09391 0.0609288 3.91932 0.173924C3.74472 0.28692 3.60626 0.447786 3.52043 0.637355L0.0987182 7.98639C0.023206 8.14946 -0.00987492 8.329 0.00255351 8.50831C0.0149819 8.68761 0.0725157 8.86086 0.169801 9.01192C0.267087 9.16298 0.400962 9.28695 0.55897 9.37229C0.716977 9.45763 0.89398 9.50157 1.07351 9.50002H6.10661C6.2865 9.50031 6.46343 9.54583 6.62117 9.63239C6.77891 9.71894 6.91242 9.84377 7.00944 9.99541C7.10646 10.1471 7.1639 10.3207 7.17647 10.5003C7.18904 10.68 7.15636 10.8599 7.0814 11.0236L4.06751 17.4864C3.99441 17.6504 3.96352 17.8302 3.97765 18.0092C3.99178 18.1883 4.05048 18.361 4.14841 18.5115C4.24633 18.662 4.38035 18.7856 4.53823 18.8709C4.69611 18.9562 4.87283 19.0006 5.05225 19H14.4719C14.6798 18.9995 14.8832 18.9391 15.0578 18.8261C15.2324 18.7131 15.3708 18.5522 15.4566 18.3627L18.8784 11.0236C18.9537 10.8591 18.9863 10.6783 18.9733 10.4978C18.9602 10.3174 18.9019 10.1431 18.8037 9.99121C18.7055 9.8393 18.5707 9.71465 18.4116 9.62879C18.2525 9.54293 18.0743 9.49864 17.8936 9.50002H12.8705C12.6909 9.50157 12.5139 9.45763 12.3559 9.37229C12.1979 9.28695 12.064 9.16298 11.9668 9.01192C11.8695 8.86086 11.8119 8.68761 11.7995 8.50831C11.7871 8.329 11.8202 8.14946 11.8957 7.98639ZM32.0778 6.83127L27.3829 12.5273H32.0678V14.2898H24.8464V12.5571L29.5513 6.86114H25.0056V5.09856H32.0778V6.83127ZM33.898 14.2898H35.9968V5.09856H33.898V14.2898ZM45.8243 8.06606C45.8243 9.80872 44.6605 11.0136 42.7806 11.0136H40.2342V14.2898H38.1354V5.09856H42.7806C44.6605 5.09856 45.8243 6.31345 45.8243 8.06606ZM40.2242 6.83127V9.28094H42.3827C43.2083 9.28094 43.7355 8.84279 43.7355 8.06606C43.7355 7.28933 43.2083 6.83127 42.3827 6.83127H40.2242ZM57.472 14.2898V5.09856H54.2592L53.1651 8.69342C52.8866 9.65935 52.608 10.6253 52.3892 11.5315C52.1704 10.6452 51.9018 9.67927 51.6034 8.69342L50.4993 5.09856H47.2268V14.2898H49.2361V9.58964C49.2361 8.64363 49.2261 7.73745 49.1963 6.82131C49.3313 7.32671 49.4871 7.82171 49.6596 8.36976L49.6596 8.36984L49.6597 8.37001C49.7794 8.75054 49.9073 9.15664 50.0418 9.60956L51.4741 14.2898H53.2844L54.6969 9.60956C55.0351 8.50422 55.2539 7.68766 55.4827 6.81135C55.4528 7.72749 55.4429 8.64363 55.4429 9.60956V14.2898H57.472ZM66.2154 6.86114H61.6995V8.64363H65.9468V10.4162H61.6995V12.5273H66.3745V14.2898H59.6106V5.09856H66.2154V6.86114ZM72.1238 10.924L74.4215 14.2898H76.759L73.3671 9.40044L76.381 5.09856H74.0535L72.1536 7.90673L70.2538 5.09856H67.8864L70.8904 9.38052L67.5084 14.2898H69.8161L72.1238 10.924Z"
+                fill="white"
+              />
+            </svg>
+          </Box>
+        );
+      }
+
+      const BottomInfo = () => {
+        return (
+          <Box>
+            <Box
+              sx={{
+                mb: 2,
+                textAlign: "center",
+                mx: "auto",
+                "@media (max-width: 576px)": {
+                  display: "flex",
+                  flexDirection: "column"
+                },
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 900,
+                  fontSize: 34,
+                  color: theme.palette.black,
+                  lineHeight: 1.3,
+                }}
+                variant="caption"
+              >
+                Checking your browser before accessing
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  fontSize: 34,
+                  color: theme.palette.blurple,
+                  lineHeight: 1.3,
+                }}
+                variant="caption"
+              >
+                &nbsp;zipmex.com
+              </Typography>
+            </Box>
+            <Box sx={{ mb: 2, textAlign: "center", maxWidth: 500, mx: "auto" }}>
+              <Typography sx={{ fontSize: 16, lineHeight: 1.4, }}>
+                This process is automatic. Your browser will redirect to your
+                requested content shortly. Please allow up to 5 seconds.
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                mb: 2,
+                textAlign: "center",
+                mx: "auto",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: 12,
+                  lineHeight: 1.4,
+                  position: "relative",
+                  "&:after": {
+                    content: '""',
+                    background: "#96ff90",
+                    position: "absolute",
+                    bottom: -2,
+                    left: "1%",
+                    height: 2,
+                    width: "98%",
+                  },
+                }}
+                variant="caption"
+              >
+                DDoS protection by CloudFlare
+              </Typography>
+            </Box>
+            <Box sx={{ textAlign: "center", mx: "auto" }}>
+              <Typography sx={{ fontSize: 12, lineHeight: 1.4, }}>
+                Ray ID: 2809d81039000294
+              </Typography>
+            </Box>
+          </Box>
+        );
+      }
+
+      const EmptyCircularProgress = React.memo(() => {
+        return (
+          <CircularProgress
+            variant="determinate"
+            size={192}
+            thickness={2.2}
+            value={100}
+            sx={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              "& .MuiCircularProgress-svg": {
+                color: theme.palette.gray,
+              },
+            }}
+          />
+        );
+      });
+
+      const SecondsIndicator = React.memo(({children}) => {
+        return (
+          <Typography
+            variant="caption"
+            sx={{
+              fontSize: 48,
+              lineHeight: 1.3,
+            }}
+          >
+            {children}
+          </Typography>
+        );
+      });
+
+      const StaticText = React.memo(() => {
+        return (
+          <Typography
+            variant="caption"
+            sx={{
+              fontSize: 34,
+              mt: 1,
+              lineHeight: 1.3,
+            }}
+          >
+            s
+          </Typography>
+        );
+      });
+
+      const CircularProgressWithLabel = (props) => {
+        return (
+          <Box sx={{ display: "flex", justifyContent: "center", mb: 6 }}>
+            <Box sx={{ position: "relative", display: "inline-flex" }}>
+              <CircularProgress
+                variant="determinate"
+                size={192}
+                thickness={2.2}
+                value={props.value}
+                sx={{
+                  "& .MuiCircularProgress-svg": {
+                    color: theme.palette.blurple,
+                  },
+                  zIndex: 2,
+                }}
+              />
+              <EmptyCircularProgress />
+              <Box
+                sx={{
+                  top: 0,
+                  left: 0,
+                  bottom: 0,
+                  right: 0,
+                  position: "absolute",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <SecondsIndicator>
+                  {Math.ceil((100 - props.value) / 20)}
+                </SecondsIndicator>
+                <StaticText />
+              </Box>
+            </Box>
+          </Box>
+        );
+      }
+
+      const CircularStatic = () => {
+        const [progress, setProgress] = React.useState(0);
+
+        React.useEffect(() => {
+          const timer = setInterval(() => {
+            setProgress((prevProgress) => {
+              prevProgress >= 100 && clearInterval(timer);
+              return prevProgress >= 100 ? 100 : prevProgress + 2;
+            });
+          }, 100);
+          return () => {
+            clearInterval(timer);
+          };
+        }, []);
+
+        return <CircularProgressWithLabel value={progress} />;
+      }
+
+      const App = () => {
+        return (
+          <Box variant="div" sx={{ height: "100vh" }}>
+            <Box
+              variant="div"
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                height: "100%",
+                alignItems: "center",
+                "@media (max-width: 576px)": {
+                  alignItems: "flex-start",
+                  mt: 4,
+                },
+              }}
+            >
+              <Box sx={{ p: 2 }}>
+                <Logo />
+                <CircularStatic />
+                <BottomInfo />
+              </Box>
+            </Box>
+          </Box>
+        );
+      }
+
+      ReactDOM.render(
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>,
+        document.querySelector("#root")
+      );
+    </script>
+  </body>
+</html>
